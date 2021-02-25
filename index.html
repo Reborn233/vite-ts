@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, viewport-fit=cover"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="icon" href="./favicon_ucar.ico" />
+    <title></title>
+  </head>
+  <body>
+    <main class="container">
+      <div class="page">
+        <div class="navbar">
+          <div class="navbar-title">销户</div>
+        </div>
+        <div id="main" class="content">
+          <!--  -->
+          <div class="steps">
+            <div class="step" data-index="1">
+              <div class="step-hd" data-index="1">
+                <div class="step-left">
+                  <div class="step-label">账户总余额</div>
+                  <div class="icon" data-target="#p1">?</div>
+                </div>
+                <div class="btn btn-primary btn-disabled" id="withdraw">
+                  提现到绑定卡
+                </div>
+              </div>
+              <div class="step-bd">
+                <div class="step-price">
+                  <span id="amount">*.**</span><small>元</small>
+                </div>
+              </div>
+            </div>
+            <div class="step" data-index="2">
+              <div class="step-hd">
+                <div class="step-left">
+                  <div class="step-label">销户</div>
+                  <div class="icon" data-target="#p2">?</div>
+                </div>
+                <div class="btn btn-primary btn-disabled" id="account-close">
+                  销户
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 温馨提示 -->
+          <div class="explain">
+            <div class="explain-title">温馨提示</div>
+            <ul class="explain-list">
+              <li>
+                1、【修•养•生息】计划自2021年3月1日起停止运营，您购买及使用套餐所产生的“首购激励金”、“消费激励金”、“增值金”已清零，本金及本金所产生的收益可提现至您绑定的银行卡；
+              </li>
+              <li>
+                2、第一步及第二步的提现操作可以同时进行，提现以各银行实际到账时间为准；
+              </li>
+              <li>3、所有余额都清零后才可以进行销户操作；</li>
+            </ul>
+          </div>
+
+          <!-- popper -->
+          <div class="popper popper-p1" id="p1" style="display: none">
+            <ul>
+              <li>
+                1、该余额包含两部分：
+                <ul>
+                  <li>
+                    ①您购买【修•养•生息】计划套餐内的本金及本金所产生的银行收益；
+                  </li>
+                  <li>
+                    ②您购买【修•养•生息】计划套餐前，由您的银行卡直接转账的资金；
+                  </li>
+                </ul>
+              </li>
+              <li>
+                2、仍有余额的原因：
+                <ul>
+                  <li>①您未消费完【修•养•生息】计划；</li>
+                  <li>②您消费完后第二天仍然产生的收益；</li>
+                  <li>③您退卡后第二天仍然产生的收益；</li>
+                  <li>④您从银行卡转账后未购买套餐所产生的；</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="popper popper-p2" id="p2" style="display: none">
+            <ul>
+              注销您参加购买【修·养·生息】计划套餐时开通的民生银行Ⅱ类账户
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- 销户验证 -->
+    <div id="dialog" style="display: none">
+      <div class="mask"></div>
+      <div class="dialog">
+        <div class="dialog-hd">销户验证</div>
+        <div class="dialog-bd">
+          <div class="dialog-text">
+            已给手机号<span id="phoneNo">***********</span>发送短信验证码
+          </div>
+          <div class="dialog-input">
+            <input id="messageCode" type="text" placeholder="请填写验证码" />
+            <div class="countdown" id="countdown">重新获取</div>
+          </div>
+          <div class="btn btn-large btn-primary" id="submit">确定</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- javascript -->
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>
+
+<script>
+  !(function (e) {
+    var t = e.document,
+      n = t.documentElement,
+      i = 'orientationchange' in e ? 'orientationchange' : 'resize',
+      a = (function e() {
+        var t = n.getBoundingClientRect().width;
+        return (
+          (n.style.fontSize =
+            5 * Math.max(Math.min((t / 750) * 20, 11.2), 8.55) + 'px'),
+          e
+        );
+      })();
+    n.setAttribute(
+      'data-dpr',
+      e.navigator.appVersion.match(/iphone/gi) ? e.devicePixelRatio : 1,
+    ),
+      /iP(hone|od|ad)/.test(e.navigator.userAgent) &&
+        (t.documentElement.classList.add('ios'),
+        parseInt(
+          e.navigator.appVersion.match(/OS (\d+)_(\d+)_?(\d+)?/)[1],
+          10,
+        ) >= 8 && t.documentElement.classList.add('hairline')),
+      t.addEventListener &&
+        (e.addEventListener(i, a, !1),
+        t.addEventListener('DOMContentLoaded', a, !1));
+  })(window);
+</script>
