@@ -4,6 +4,7 @@ import toast from './libs/toast';
 import showSuccess from './libs/success';
 import showError from './libs/error';
 import Api from './libs/api';
+// 模拟数据用于本地调试，build 需注释
 import './mock/cmbc';
 
 // 事件绑定装饰器
