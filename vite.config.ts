@@ -6,7 +6,7 @@ export default defineConfig({
     open: true,
     proxy: {
       '/api': {
-        target: 'https://blog.csdn.net/weixin_45292658',
+        target: 'https://1270.0.0.1:9090',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
