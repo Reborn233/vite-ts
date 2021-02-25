@@ -4,7 +4,7 @@ import toast from './libs/toast';
 import showSuccess from './libs/success';
 import showError from './libs/error';
 import Api from './libs/api';
-// import './mock/cmbc';
+import './mock/cmbc';
 
 // 事件绑定装饰器
 function bindEvent(select: string, eventName: string = 'click') {
