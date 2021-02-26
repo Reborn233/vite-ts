@@ -57,19 +57,19 @@ class App {
   // 提现
   @bindEvent('#withdraw')
   async withdraw() {
-    $.openBtnLoading('#withdraw', '提现中...');
+    const loading = $.btnLoading('#withdraw', '提现中...');
     try {
       const res = await service.cashOut();
       if (res.code === SUCCESS_CODE) {
-        $.closeBtnLoading('#withdraw', '已提现');
+        loading.hide('已提现');
         $('#amount').text('0.00');
         this.showCloseAccount();
       } else {
-        $.closeBtnLoading('#withdraw', '提现到绑定卡');
+        loading.hide();
         toast(res.message);
       }
     } catch (error) {
-      $.closeBtnLoading('#withdraw', '提现到绑定卡');
+      loading.hide();
     }
   }
   showCloseAccount() {
@@ -116,10 +116,9 @@ class App {
       toast('请输入验证码');
       return;
     }
-    $.openBtnLoading('#submit', '销户中...');
+    const loading = $.btnLoading('#submit', '销户中...');
     try {
       const res = await service.closeAccount({ messageCode });
-      $.closeBtnLoading('#submit', '确定');
       if (res.code === SUCCESS_CODE) {
         $('#dialog').hide();
         showSuccess();
@@ -127,6 +126,7 @@ class App {
         toast(res.message);
       }
     } catch (error) {}
+    loading.hide();
   }
 }
 

@@ -43,7 +43,7 @@ Mock.mock(new RegExp('/autocloud/account/asserts/sendCloseCode'), 'post', () => 
 
 Mock.mock(new RegExp('/autocloud/account/asserts/closeAccount'), 'post', () => {
   return {
-    "code": "000000",
+    "code": "0000000",
     "message": "success",
     "content": {
       "message": "处理成功"

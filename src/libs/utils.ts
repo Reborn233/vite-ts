@@ -90,11 +90,20 @@ const $ = (...args: Array<any>) => {
     return createCollection(collection);
   }
 };
-$.openBtnLoading = (id: string, text: string = '请稍等...') => {
-  $(id).addClass('btn-loading').text(text);
-};
-$.closeBtnLoading = (id: string, text: string) => {
-  $(id).removeClass('btn-loading').text(text);
+$.noop = () => {};
+$.btnLoading = (id: string, text: string = '请稍等...') => {
+  let _sington: any;
+  const $btn = $(id);
+  const textContent = $btn.text();
+  $btn.addClass('btn-loading').text(text);
+  let _hide = (text: string) => {
+    _hide = $.noop;
+    $btn.removeClass('btn-loading').text(text || textContent);
+    _sington = false;
+  };
+  _sington = $btn[0];
+  _sington.hide = _hide;
+  return _sington;
 };
 $.getUrlParams = () => {
   let url = location.search; //获取url中"?"符后的字串
